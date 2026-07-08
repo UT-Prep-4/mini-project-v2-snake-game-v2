@@ -118,11 +118,13 @@ for y in range(HEIGHT):
         if y == HEIGHT - 1 or y == 0 or x == WIDTH - 1 or x == 0:
             board[y][x] = "*"
 
-def print_board(x_coord, y_coord):
+def print_board(x_coord, y_coord, string):
   for y in range(HEIGHT):
       for x in range(WIDTH):
           if y == y_coord and x == x_coord:
-              board[y][x] = "."
+              board[y][x] = string
 
   for row in board:
     print(' '.join(row))
+
+print_board(9, 9, ".")
