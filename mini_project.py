@@ -93,6 +93,12 @@ def RPS():
         RPS()
     elif cont == "N":
         print(f"{uscore} - {bscore}")
+        if uscore > bscore:
+            print("You Win!")
+        elif uscore < bscore:
+            print("You Lose.")
+        else:
+            print("You Tied.")
     else:
         print("Not valid.")
 RPS()
