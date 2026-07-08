@@ -1,4 +1,4 @@
-#Name:
+#Name: Suchir, Chirag, Jayan, Alex
 #Mini-Project - Build Your Own Game!
 '''
 This is YOUR game. You are the designer. There are only two requirements:
@@ -56,6 +56,73 @@ while loops, for loops, lists, random, and turtle graphics.
 
 ==============================================================================
 Build your game below. Delete this line and start coding!
+
+import random
+print("Welcome to Rock Paper Scissors")
+uscore = 0
+bscore = 0
+def RPS():
+    global uscore
+    global bscore
+    user = input("Rock,Paper,Scissors(R/P/S)?:")
+    bot = random.randint(0,2)
+    if bot == 0:
+        bot = "rock"
+    elif bot == 1:
+        bot = "paper"
+    else:
+        bot = "scissors"
+    if (user == "R" and bot == "rock") or (user == "P" and bot == "paper") or (user == "S" and bot == "scissors"):
+        print(f"Bot chooses {bot}.")
+        print("Tie.")
+        print(f"Score is {uscore} - {bscore}")
+    elif (user == "R" and bot == "paper") or (user == "P" and bot == "scissors") or (user == "s" and bot == "rock"):
+        print(f"Bot chooses {bot}.")
+        print("You lost.")
+        bscore += 1
+        print(f"Score is {uscore} - {bscore}")
+    elif (user == "R" and bot == "scissors") or (user == "P" and bot == "rock") or (user == "s" and bot == "paper"):
+        print(f"Bot chooses {bot}.")
+        print("You won!")
+        uscore += 1
+        print(f"Score is {uscore} - {bscore}")
+    else:
+        print("Not valid input.")
+    cont = input("Do you want to continue?(Y/N)")
+    if cont == "Y":
+        RPS()
+    elif cont == "N":
+        print(f"{uscore} - {bscore}")
+    else:
+        print("Not valid.")
+RPS()
 '''
 
-print("My game is not built yet!")
+import random
+import time
+import os
+ 
+WIDTH = 12
+HEIGHT = 12
+
+
+board = []
+for i in range(HEIGHT):
+    row = []
+    for j in range(WIDTH):
+        row.append('_')
+    board.append(row)
+
+for y in range(HEIGHT):
+    for x in range(WIDTH):
+        if y == HEIGHT - 1 or y == 0 or x == WIDTH - 1 or x == 0:
+            board[y][x] = "*"
+
+def print_board(x_coord, y_coord):
+  for y in range(HEIGHT):
+      for x in range(WIDTH):
+          if y == y_coord and x == x_coord:
+              board[y][x] = "."
+
+  for row in board:
+    print(' '.join(row))
