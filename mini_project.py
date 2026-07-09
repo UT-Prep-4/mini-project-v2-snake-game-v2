@@ -56,6 +56,7 @@ while loops, for loops, lists, random, and turtle graphics.
 
 ==============================================================================
 Build your game below. Delete this line and start coding!
+'''
 
 import random
 print("Welcome to Rock Paper Scissors")
@@ -89,9 +90,9 @@ def RPS():
     else:
         print("Not valid input.")
     cont = input("Do you want to continue?(Y/N)")
-    if cont == "Y":
+    if cont == "Y" or "y":
         RPS()
-    elif cont == "N":
+    elif cont == "N" or "n":
         print(f"{uscore} - {bscore}")
         if uscore > bscore:
             print("You Win!")
@@ -102,65 +103,5 @@ def RPS():
     else:
         print("Not valid.")
 RPS()
-'''
-
-import random
-import time
-import os
-import keyboard
- 
-WIDTH = 12
-HEIGHT = 12
 
 
-board = []
-for i in range(HEIGHT):
-    row = []
-    for j in range(WIDTH):
-        row.append('_')
-    board.append(row)
-
-for y in range(HEIGHT):
-    for x in range(WIDTH):
-        if y == HEIGHT - 1 or y == 0 or x == WIDTH - 1 or x == 0:
-            board[y][x] = "*"
-
-def update_board(x_coord, y_coord, string):
-  for y in range(HEIGHT):
-      for x in range(WIDTH):
-          if y == y_coord and x == x_coord:
-              board[y][x] = string
-
-def print_board():
-    for row in board:
-        print(' '.join(row))
-
-update_board(9, 9, ".")
-
-snake = [(5,7),(5,6),(5,5)]
-direction = (0,1)
-
-def draw_snake(board, snake):
-    display = []
-    for row in board:
-        display.append(row[:])
-
-    for segment in snake:
-        y,x = segment
-        display[y][x] = "0"
-
-    for row in display:
-        print(' '.join(row))
-
-draw_snake(board, snake)
-
-
-def right():
-    head_y, head_x = snake[0]
-    new_head = (head_y + direction[0], head_x + direction[1])
-    snake.insert(0, new_head)
-    snake.pop()
-
-while keyboard.is_pressed('d'):
-    right()
-            
