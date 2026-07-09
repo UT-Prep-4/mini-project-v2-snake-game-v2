@@ -107,6 +107,7 @@ RPS()
 import random
 import time
 import os
+import keyboard
  
 WIDTH = 12
 HEIGHT = 12
@@ -124,13 +125,42 @@ for y in range(HEIGHT):
         if y == HEIGHT - 1 or y == 0 or x == WIDTH - 1 or x == 0:
             board[y][x] = "*"
 
-def print_board(x_coord, y_coord, string):
+def update_board(x_coord, y_coord, string):
   for y in range(HEIGHT):
       for x in range(WIDTH):
           if y == y_coord and x == x_coord:
               board[y][x] = string
 
-  for row in board:
-    print(' '.join(row))
+def print_board():
+    for row in board:
+        print(' '.join(row))
 
-print_board(9, 9, ".")
+update_board(9, 9, ".")
+
+snake = [(5,7),(5,6),(5,5)]
+direction = (0,1)
+
+def draw_snake(board, snake):
+    display = []
+    for row in board:
+        display.append(row[:])
+
+    for segment in snake:
+        y,x = segment
+        display[y][x] = "0"
+
+    for row in display:
+        print(' '.join(row))
+
+draw_snake(board, snake)
+
+
+def right():
+    head_y, head_x = snake[0]
+    new_head = (head_y + direction[0], head_x + direction[1])
+    snake.insert(0, new_head)
+    snake.pop()
+
+while keyboard.is_pressed('d'):
+    right()
+            
